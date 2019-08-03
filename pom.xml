@@ -16,7 +16,7 @@
     </parent>
     <groupId>karvozavr.spring</groupId>
     <artifactId>pet-clinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>pet-clinic</name>
     <description>Me learning spring by practice project</description>
 
@@ -43,7 +43,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:karvozavr/pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>pet-clinic-0.0.2</tag>
   </scm>
 
 </project>
