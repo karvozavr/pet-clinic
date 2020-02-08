@@ -1,13 +1,12 @@
 package karvozavr.spring.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import karvozavr.spring.petclinic.model.BaseEntity;
 
-public abstract class AbstractMapService<T, ID> {
+import java.util.*;
 
-    protected Map<ID, T> map = new HashMap<>();
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+
+    protected Map<Long, T> map = new HashMap<>();
 
     public Set<T> findAll() {
         return new HashSet<>(map.values());
@@ -17,8 +16,16 @@ public abstract class AbstractMapService<T, ID> {
         return map.get(id);
     }
 
-    public T save(ID id, T object) {
-        map.put(id, object);
+    public T save(T object) {
+        if (object != null) {
+            if (object.getId() != null) {
+                object.setId(getNextId());
+            }
+            map.put(object.getId(), object);
+        } else {
+            throw new RuntimeException("Object should not be null");
+        }
+
         return object;
     }
 
@@ -28,5 +35,9 @@ public abstract class AbstractMapService<T, ID> {
 
     public void deleteById(ID id) {
         map.remove(id);
+    }
+
+    private Long getNextId() {
+        return Collections.max(map.keySet()) + 1L;
     }
 }
