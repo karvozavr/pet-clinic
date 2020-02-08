@@ -1,9 +1,10 @@
 package karvozavr.spring.petclinic.services.map;
 
 import karvozavr.spring.petclinic.model.Owner;
-import karvozavr.spring.petclinic.services.CrudService;
 import karvozavr.spring.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
